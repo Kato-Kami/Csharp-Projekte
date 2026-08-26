@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Animal/Animal.csproj" Id="c806856b-d2dd-4676-8b9f-138d33d4d1af" />
+  <Project Path="Csharp-Projekte/Csharp-Projekte.csproj" />
+  <Project Path="Duration/Duration.csproj" Id="f18df356-ff17-4bcb-ad04-398cfa64ffde" />
+  <Project Path="DynamischeDatenstrukturen_Koffer/DynamischeDatenstrukturen_Koffer.csproj" Id="b5624e3a-f0b9-4923-9ef0-8668b1f9e931" />
+  <Project Path="GenericsLinkedList/GenericsLinkedList.csproj" Id="9efce9e0-2eb3-428e-8831-aecb69ea09fe" />
+</Solution>
