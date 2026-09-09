@@ -18,13 +18,17 @@
 
     abstract class Animal
     {
+        // Lässt abgeleitete Klassen wie Dog und Cat auf das Datum zugreifen
         protected string name;
         private int age;
+
+        // Jede konkrete Tierklasse muss eine Species-Eigenschaft implementieren 
         public abstract string Species { get; set; }
 
+        // Gibt die Anzahl der erzeugten Tiere wieder
         public static int InstanceCount
         {
-            get; private set;
+            get; private set; //private set: Wert kann nur in dieser Klasse verändert werden
         }
 
 
@@ -38,6 +42,7 @@
 
         public abstract void Speak();
 
+        // Altersvergleich unter den erzeugten Tieren
         public void Compare(Animal a)
         {
             if (age > a.age) Console.WriteLine($"{name} ist aelter als {a.name}.");
@@ -47,9 +52,12 @@
 
     }
 
+    // Ein Hund besitzt alle vererbbaren Eigenschaften von einem Tier (Animal)
     class Dog : Animal
     {
         private string breed;
+
+        // Implementierung der abstrakten Species-Eigenschaft
         public override string Species { get; set; }
 
         public Dog(string name, int age, string breed) : base(name, age)
@@ -71,10 +79,13 @@
 
     }
 
+    // Eine Katze besitzt alle vererbbaren Eigenschaften von einem Tier (Animal)
     class Cat : Animal
     {
         private string color;
         private string species;
+        
+        // Implementierung der abstrakten Species-Eigenschaft
         public override string Species
         {
             get { return species; }
@@ -86,7 +97,7 @@
             this.color = color;
 
         }
-
+        
         public override void Speak()
         {
             Console.WriteLine($"{name} sagt Miau");
