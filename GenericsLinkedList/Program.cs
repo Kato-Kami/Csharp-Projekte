@@ -9,8 +9,11 @@ namespace Genericslinkedlist
 
     namespace PraktikumGenerics
     {
+        // Generische LinkedList: T kann ein beliebiger vergleichbarer Datentyp sein 
+        // IEnumerable<T> ermöglicht die Verwendung von foreach
         public class LinkedList<T> : IEnumerable<T> where T : IComparable<T>
         {
+            // Speichert einen Wert und verweist auf den nächsten Knoten
             private class LinkedListNode
             {
                 public T Value { get; set; }
@@ -23,6 +26,7 @@ namespace Genericslinkedlist
                 }
             }
 
+            // head zeigt auf das erste, tail auf das letzte Element der Liste
             private LinkedListNode head;
             private LinkedListNode tail;
 
@@ -32,16 +36,19 @@ namespace Genericslinkedlist
                 tail = null;
             }
 
+            // Neuen Knoten mit dem übergebenen Wert
             public void Add(T value)
             {
                 var newNode = new LinkedListNode(value);
                 if (head == null)
                 {
+                    // Falls die Liste leer ist: Neuer Knoten ist erstes und letztes Element
                     head = newNode;
                     tail = newNode;
                 }
                 else
                 {
+                    // Neues Element an das bisherige Ende anhängen
                     tail.Next = newNode;
                     tail = newNode;
                 }
@@ -49,12 +56,15 @@ namespace Genericslinkedlist
 
             public T GetFirst()
             {
+                // Fehler, wenn versucht wird, aus einer leeren Liste zu lesen
                 if (head == null)
                 {
                     throw new InvalidOperationException("Die Liste ist leer.");
                 }
 
-                var firstValue = head.Value;
+                // Wert des ersten Knotens wird gespeichert
+                var firstValue = head.Value; 
+                // Head wird auf den nächsten Knoten verschoben
                 head = head.Next;
 
                 if (head == null)
@@ -67,22 +77,26 @@ namespace Genericslinkedlist
 
             public void Print()
             {
+                // foreach ist jetzt dank der Implementierung von IEnumerable verwendbar
                 foreach (var item in this)
                 {
                     Console.WriteLine(item);
                 }
             }
 
+            // Ermöglicht das Durchlaufen der LinkedList mit foreach
             public IEnumerator<T> GetEnumerator()
             {
                 var current = head;
                 while (current != null)
                 {
+                   // Gibt den aktuellen Wert zurück und pausiert die Methode
                     yield return current.Value;
                     current = current.Next;
                 }
             }
-
+            
+            // Verwendet den bereits vorhandenen generischen Enumerator
             IEnumerator IEnumerable.GetEnumerator()
             {
                 return GetEnumerator();
@@ -100,12 +114,14 @@ namespace Genericslinkedlist
                 Alter = alter;
             }
 
+            // Vergleich des Alters von Personen
             public int CompareTo(Person other)
             {
                 if (other == null) return 1;
                 return Alter.CompareTo(other.Alter);
             }
 
+            // Festlegung, was beim Ausgeben eines Person-Objekts angezeigt wird
             public override string ToString()
             {
                 return Name;
