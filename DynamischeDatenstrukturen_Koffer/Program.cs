@@ -21,6 +21,7 @@ namespace Koffer_Dynamische_Datenstrukturen
         }
     }
 
+    // Koffer mit einer maximalen Gewichtskapazität
     public class Suitcase
     {
         private double maxWeight;
@@ -29,10 +30,12 @@ namespace Koffer_Dynamische_Datenstrukturen
         public Suitcase(double maxWeight)
         {
             this.maxWeight = maxWeight;
+
+            // Leere Liste wird beim Erstellen des Koffers angelegt
             luggageItems = new List<Luggage>();
         }
 
-
+        // Fügt einen Gegenstand hinzu, wenn das Maximalgewicht nicht überschritten wird
         public bool GepäckHinzufügen(Luggage luggage)
         {
             if (this.Weight + luggage.Weight <= maxWeight)
@@ -43,6 +46,7 @@ namespace Koffer_Dynamische_Datenstrukturen
             return false;
         }
 
+        // Entfernt einen Gepäckgegenstand anhand seiner Beschreibung
         public Luggage GepäckEntfernen(string description)
         {
             for (int i = 0; i < luggageItems.Count; i++)
